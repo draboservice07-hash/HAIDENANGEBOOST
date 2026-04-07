@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ANGE HAIDEN SERVICE BOOST</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --gold:#F5A623;--gold-light:#FFD77A;--gold-dark:#C07D10;
+  --dark:#0A0A0F;--dark2:#12121A;--dark3:#1A1A28;
+  --wave:#1B9AE4;--wave2:#0D6EAD;
+  --green:#25D366;--white:#F0EDE8;--dim:#8A8590;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--dark);color:var(--white);font-family:'Outfit',sans-serif;overflow-x:hidden;}
+.bg-canvas{position:fixed;inset:0;pointer-events:none;z-index:0;
+  background:radial-gradient(ellipse at 20% 20%,rgba(245,166,35,.07) 0%,transparent 60%),
+             radial-gradient(ellipse at 80% 80%,rgba(27,154,228,.07) 0%,transparent 60%),var(--dark);}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:100;background:rgba(10,10,15,.93);backdrop-filter:blur(20px);
+  border-bottom:1px solid rgba(245,166,35,.15);padding:0 18px;
+  display:flex;align-items:center;justify-content:space-between;height:62px;}
+.nav-logo{font-family:'Bebas Neue',sans-serif;font-size:19px;letter-spacing:1px;line-height:1.1;
+  background:linear-gradient(135deg,var(--gold-light),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.nav-logo small{display:block;font-size:9px;letter-spacing:3px;font-family:'Outfit',sans-serif;font-weight:700;-webkit-text-fill-color:rgba(245,166,35,.7);}
+.nav-btns{display:flex;gap:7px;}
+.nbtn{border:none;border-radius:50px;padding:9px 14px;font-size:12px;font-weight:700;cursor:pointer;text-decoration:none;display:flex;align-items:center;gap:6px;transition:.2s;}
+.nbtn-wa{background:linear-gradient(135deg,#25D366,#128C7E);color:#fff;box-shadow:0 4px 20px rgba(37,211,102,.3);}
+.nbtn-wave{background:linear-gradient(135deg,var(--wave),var(--wave2));color:#fff;box-shadow:0 4px 20px rgba(27,154,228,.3);}
+.nbtn:hover{transform:translateY(-2px);}
+
+/* HERO */
+.hero{position:relative;z-index:1;min-height:87vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:58px 20px 40px;overflow:hidden;}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at center top,rgba(245,166,35,.1) 0%,transparent 65%);}
+.hero-badge{display:inline-flex;align-items:center;gap:7px;background:rgba(245,166,35,.1);border:1px solid rgba(245,166,35,.3);border-radius:50px;padding:7px 18px;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold-light);margin-bottom:22px;animation:fadeDown .6s ease both;}
+.hero h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(48px,13vw,106px);line-height:.9;letter-spacing:2px;margin-bottom:8px;animation:fadeUp .7s ease .1s both;}
+.hero h1 .hw{display:block;color:var(--white);}
+.hero h1 .hg{display:block;background:linear-gradient(135deg,var(--gold-light),var(--gold),var(--gold-dark));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.hero-sub{font-size:clamp(14px,3.5vw,17px);color:var(--dim);max-width:480px;line-height:1.7;margin:16px auto 26px;animation:fadeUp .7s ease .2s both;}
+.hero-nets{display:flex;flex-wrap:wrap;gap:7px;justify-content:center;margin-bottom:30px;animation:fadeUp .7s ease .25s both;}
+.hnet{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:50px;padding:6px 13px;font-size:12px;font-weight:600;}
+.hero-btns{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;animation:fadeUp .7s ease .3s both;}
+.btn-gold{background:linear-gradient(135deg,var(--gold-light),var(--gold),var(--gold-dark));color:var(--dark);border:none;border-radius:50px;padding:14px 26px;font-size:14px;font-weight:800;cursor:pointer;text-decoration:none;transition:.2s;box-shadow:0 6px 30px rgba(245,166,35,.4);display:inline-flex;align-items:center;gap:7px;}
+.btn-gold:hover{transform:translateY(-3px);box-shadow:0 12px 40px rgba(245,166,35,.5);}
+.btn-wave{background:linear-gradient(135deg,var(--wave),var(--wave2));color:#fff;border:none;border-radius:50px;padding:14px 26px;font-size:14px;font-weight:800;cursor:pointer;text-decoration:none;transition:.2s;box-shadow:0 6px 30px rgba(27,154,228,.35);display:inline-flex;align-items:center;gap:7px;}
+.btn-wave:hover{transform:translateY(-3px);}
+.btn-ghost{background:transparent;color:var(--white);border:1.5px solid rgba(255,255,255,.18);border-radius:50px;padding:14px 26px;font-size:14px;font-weight:600;cursor:pointer;text-decoration:none;transition:.2s;display:inline-flex;align-items:center;gap:7px;}
+.btn-ghost:hover{border-color:var(--gold);background:rgba(245,166,35,.07);}
+
+/* STATS */
+.stats-bar{position:relative;z-index:1;display:grid;grid-template-columns:repeat(3,1fr);gap:1px;
+  background:rgba(245,166,35,.1);border-top:1px solid rgba(245,166,35,.1);border-bottom:1px solid rgba(245,166,35,.1);}
+.stat-item{background:rgba(10,10,15,.97);text-align:center;padding:20px 10px;}
+.stat-num{font-family:'Bebas Neue',sans-serif;font-size:33px;background:linear-gradient(135deg,var(--gold-light),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent;line-height:1;}
+.stat-lbl{font-size:10px;color:var(--dim);text-transform:uppercase;letter-spacing:1.5px;margin-top:4px;}
+
+/* SECTION HEADER */
+section{position:relative;z-index:1;}
+.sec-hd{text-align:center;padding:54px 20px 34px;}
+.sec-tag{display:inline-block;font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:12px;}
+.sec-hd h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(32px,8vw,56px);letter-spacing:1px;line-height:1;color:var(--white);}
+.sec-hd p{font-size:13px;color:var(--dim);max-width:420px;margin:10px auto 0;line-height:1.7;}
+
+/* TARIFS */
+#tarifs{background:var(--dark2);padding-bottom:52px;}
+.network-tabs{display:flex;gap:7px;overflow-x:auto;padding:0 14px 22px;scrollbar-width:none;justify-content:center;flex-wrap:wrap;}
+.network-tabs::-webkit-scrollbar{display:none;}
+.ntab{background:rgba(255,255,255,.04);border:1.5px solid rgba(255,255,255,.09);color:var(--dim);border-radius:50px;padding:8px 16px;font-size:12px;font-weight:600;cursor:pointer;transition:.2s;white-space:nowrap;display:flex;align-items:center;gap:6px;}
+.ntab.active,.ntab:hover{background:rgba(245,166,35,.1);border-color:var(--gold);color:var(--gold-light);}
+.type-tabs{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;padding:0 14px 26px;}
+.ttab{background:rgba(255,255,255,.04);border:1.5px solid rgba(255,255,255,.09);color:var(--dim);border-radius:50px;padding:8px 17px;font-size:12px;font-weight:600;cursor:pointer;transition:.2s;}
+.ttab.active,.ttab:hover{background:rgba(245,166,35,.08);border-color:var(--gold);color:var(--gold-light);}
+.price-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(145px,1fr));gap:10px;max-width:830px;margin:0 auto;padding:0 14px;}
+.pc{background:var(--dark3);border:1px solid rgba(255,255,255,.07);border-radius:14px;padding:17px 12px;text-align:center;transition:.25s;cursor:pointer;position:relative;overflow:hidden;}
+.pc::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(245,166,35,.05),transparent);opacity:0;transition:.25s;}
+.pc:hover{border-color:var(--gold);transform:translateY(-4px);}
+.pc:hover::before{opacity:1;}
+.pc.pop{border-color:rgba(245,166,35,.45);background:linear-gradient(135deg,rgba(245,166,35,.07),var(--dark3));}
+.pop-lbl{position:absolute;top:0;right:0;background:var(--gold);color:var(--dark);font-size:8px;font-weight:800;letter-spacing:1px;padding:3px 9px;border-radius:0 14px 0 10px;text-transform:uppercase;}
+.pc-qty{font-family:'Bebas Neue',sans-serif;font-size:28px;color:var(--white);letter-spacing:1px;line-height:1;}
+.pc-unit{font-size:10px;color:var(--dim);text-transform:uppercase;letter-spacing:1px;margin:4px 0 10px;}
+.pc-price{font-family:'Bebas Neue',sans-serif;font-size:18px;background:linear-gradient(135deg,var(--gold-light),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.pc-curr{font-size:10px;font-weight:700;color:var(--gold);}
+.packs-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(225px,1fr));gap:12px;max-width:830px;margin:0 auto;padding:0 14px;}
+.pack{background:var(--dark3);border:1.5px solid rgba(245,166,35,.2);border-radius:18px;padding:20px 17px;transition:.25s;cursor:pointer;}
+.pack:hover{border-color:var(--gold);transform:translateY(-4px);box-shadow:0 20px 50px rgba(245,166,35,.1);}
+.pack-net{font-size:10px;color:var(--gold);text-transform:uppercase;letter-spacing:2px;font-weight:700;margin-bottom:5px;}
+.pack-ttl{font-family:'Bebas Neue',sans-serif;font-size:19px;color:var(--gold-light);letter-spacing:1px;margin-bottom:9px;}
+.pack-inc{display:flex;flex-direction:column;gap:5px;margin-bottom:13px;}
+.pack-inc span{font-size:13px;color:var(--white);display:flex;align-items:center;gap:7px;}
+.pack-inc span::before{content:'✦';color:var(--gold);font-size:9px;}
+.pack-price{font-family:'Bebas Neue',sans-serif;font-size:28px;background:linear-gradient(135deg,var(--gold-light),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.pack-save{font-size:10px;color:#25D366;font-weight:700;background:rgba(37,211,102,.1);border-radius:20px;padding:3px 10px;display:inline-block;margin-top:5px;}
+
+/* WAVE PAYMENT */
+#payer{background:var(--dark2);padding-bottom:56px;}
+.pay-wrap{max-width:520px;margin:0 auto;padding:0 18px;}
+.pay-card{background:var(--dark3);border:1.5px solid rgba(27,154,228,.25);border-radius:24px;padding:28px 22px;}
+.wave-header{display:flex;align-items:center;gap:12px;background:linear-gradient(135deg,rgba(27,154,228,.12),rgba(27,154,228,.04));border:1px solid rgba(27,154,228,.3);border-radius:14px;padding:15px 18px;margin-bottom:22px;}
+.wave-icon{width:44px;height:44px;background:linear-gradient(135deg,var(--wave),var(--wave2));border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0;}
+.wave-info h3{font-size:15px;font-weight:800;color:var(--white);}
+.wave-info p{font-size:11px;color:var(--dim);margin-top:2px;}
+.pay-steps{display:flex;flex-direction:column;gap:12px;margin-bottom:22px;}
+.pay-step{display:flex;align-items:flex-start;gap:12px;}
+.ps-num{width:27px;height:27px;border-radius:50%;background:linear-gradient(135deg,var(--wave),var(--wave2));color:#fff;font-size:12px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;}
+.ps-txt h4{font-size:13px;font-weight:700;color:var(--white);margin-bottom:2px;}
+.ps-txt p{font-size:12px;color:var(--dim);line-height:1.5;}
+.btn-wave-pay{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;background:linear-gradient(135deg,var(--wave),var(--wave2));color:#fff;border:none;border-radius:14px;padding:17px;font-size:15px;font-weight:800;cursor:pointer;text-decoration:none;transition:.2s;box-shadow:0 6px 30px rgba(27,154,228,.35);font-family:'Outfit',sans-serif;}
+.btn-wave-pay:hover{transform:translateY(-2px);box-shadow:0 12px 40px rgba(27,154,228,.5);}
+.pay-note{text-align:center;font-size:11px;color:var(--dim);margin-top:11px;line-height:1.6;}
+
+/* COMMANDER */
+#commander{padding-bottom:56px;}
+.order-wrap{max-width:520px;margin:0 auto;padding:0 18px;}
+.order-form{background:var(--dark3);border:1px solid rgba(245,166,35,.15);border-radius:24px;padding:26px 22px;}
+.form-group{margin-bottom:16px;}
+.form-group label{display:block;font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);margin-bottom:6px;}
+.form-group select,.form-group input,.form-group textarea{width:100%;background:rgba(255,255,255,.05);border:1.5px solid rgba(255,255,255,.1);border-radius:12px;padding:12px 14px;color:var(--white);font-family:'Outfit',sans-serif;font-size:14px;outline:none;transition:.2s;-webkit-appearance:none;appearance:none;}
+.form-group select:focus,.form-group input:focus,.form-group textarea:focus{border-color:var(--gold);background:rgba(245,166,35,.04);}
+.form-group select option{background:var(--dark3);color:var(--white);}
+.form-group textarea{resize:vertical;min-height:70px;}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:11px;}
+.submit-wa{width:100%;background:linear-gradient(135deg,#25D366,#128C7E);color:#fff;border:none;border-radius:14px;padding:16px;font-size:14px;font-weight:800;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:9px;transition:.2s;box-shadow:0 6px 30px rgba(37,211,102,.3);font-family:'Outfit',sans-serif;margin-bottom:9px;}
+.submit-wa:hover{transform:translateY(-2px);box-shadow:0 12px 40px rgba(37,211,102,.4);}
+.submit-wave{width:100%;background:linear-gradient(135deg,var(--wave),var(--wave2));color:#fff;border:none;border-radius:14px;padding:16px;font-size:14px;font-weight:800;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:9px;transition:.2s;box-shadow:0 6px 30px rgba(27,154,228,.3);font-family:'Outfit',sans-serif;text-decoration:none;}
+.submit-wave:hover{transform:translateY(-2px);box-shadow:0 12px 40px rgba(27,154,228,.4);}
+.or-div{text-align:center;color:var(--dim);font-size:11px;font-weight:700;margin:9px 0;position:relative;}
+.or-div::before,.or-div::after{content:'';position:absolute;top:50%;width:38%;height:1px;background:rgba(255,255,255,.07);}
+.or-div::before{left:0;}.or-div::after{right:0;}
+.form-note{text-align:center;font-size:11px;color:var(--dim);margin-top:11px;line-height:1.6;}
+
+/* HOW */
+#fonctionnement{background:var(--dark2);padding-bottom:52px;}
+.steps{display:flex;flex-direction:column;max-width:460px;margin:0 auto;padding:0 20px;}
+.step{display:flex;gap:17px;padding-bottom:28px;}
+.step:last-child{padding-bottom:0;}
+.step-line{display:flex;flex-direction:column;align-items:center;}
+.step-num{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--gold-light),var(--gold-dark));color:var(--dark);font-family:'Bebas Neue',sans-serif;font-size:19px;display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 4px 20px rgba(245,166,35,.3);}
+.step-conn{width:2px;flex:1;min-height:26px;background:linear-gradient(to bottom,rgba(245,166,35,.4),rgba(245,166,35,.04));margin:5px 0;}
+.step:last-child .step-conn{display:none;}
+.step-body{padding-top:6px;}
+.step-body h3{font-size:15px;font-weight:700;color:var(--white);margin-bottom:5px;}
+.step-body p{font-size:13px;color:var(--dim);line-height:1.6;}
+
+/* WA FLOAT */
+.wa-float{position:fixed;bottom:22px;right:16px;z-index:999;background:#25D366;color:#fff;border-radius:50px;padding:12px 19px;font-size:13px;font-weight:700;text-decoration:none;display:flex;align-items:center;gap:8px;box-shadow:0 6px 30px rgba(37,211,102,.4);animation:pulse 2.5s infinite;}
+.wa-float svg{width:20px;height:20px;flex-shrink:0;}
+@keyframes pulse{0%,100%{box-shadow:0 6px 30px rgba(37,211,102,.4)}50%{box-shadow:0 6px 50px rgba(37,211,102,.7)}}
+
+/* FOOTER */
+footer{background:var(--dark2);border-top:1px solid rgba(245,166,35,.1);text-align:center;padding:34px 20px;}
+.ft-logo{font-family:'Bebas Neue',sans-serif;font-size:24px;background:linear-gradient(135deg,var(--gold-light),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:8px;}
+footer p{font-size:12px;color:var(--dim);line-height:1.9;}
+footer a{color:var(--gold);text-decoration:none;}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeDown{from{opacity:0;transform:translateY(-18px)}to{opacity:1;transform:translateY(0)}}
+::-webkit-scrollbar{width:5px}::-webkit-scrollbar-track{background:var(--dark)}::-webkit-scrollbar-thumb{background:var(--gold-dark);border-radius:3px}
+
+@media(max-width:480px){
+  .hero{padding-top:44px;}
+  .order-form,.pay-card{padding:20px 14px;}
+  .price-grid{grid-template-columns:repeat(2,1fr);}
+  .form-row{grid-template-columns:1fr;}
+  .wa-float span{display:none;}
+  .wa-float{padding:13px;border-radius:50%;}
+  .nbtn-wave{display:none;}
+}
+</style>
+</head>
+<body>
+<div class="bg-canvas"></div>
+
+<!-- WA FLOAT -->
+<a class="wa-float" href="https://wa.me/2250714371752" target="_blank">
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  <span>WhatsApp</span>
+</a>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">ANGE HAIDEN<small>SERVICE BOOST</small></div>
+  <div class="nav-btns">
+    <a class="nbtn nbtn-wave" href="https://pay.wave.com/m/M_ci_oD0P3pXnTcDO/c/ci/" target="_blank">💳 Payer Wave</a>
+    <a class="nbtn nbtn-wa" href="https://wa.me/2250714371752" target="_blank">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      Commander
+    </a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-badge">⚡ Service de Boost Professionnel</div>
+  <h1>
+    <span class="hw">BOOST TES</span>
+    <span class="hg">RÉSEAUX SOCIAUX</span>
+  </h1>
+  <p class="hero-sub">Abonnés, vues et j'aime de qualité pour tous tes réseaux — TikTok, Instagram, Facebook, YouTube et bien plus encore.</p>
+  <div class="hero-nets">
+    <span class="hnet">🎵 TikTok</span>
+    <span class="hnet">📸 Instagram</span>
+    <span class="hnet">👤 Facebook</span>
+    <span class="hnet">▶️ YouTube</span>
+    <span class="hnet">👻 Snapchat</span>
+    <span class="hnet">✖️ Twitter/X</span>
+    <span class="hnet">💼 LinkedIn</span>
+    <span class="hnet">📌 Pinterest</span>
+    <span class="hnet">📱 Telegram</span>
+  </div>
+  <div class="hero-btns">
+    <a class="btn-gold" href="#commander">⚡ Commander</a>
+    <a class="btn-wave" href="https://pay.wave.com/m/M_ci_oD0P3pXnTcDO/c/ci/" target="_blank">💳 Payer via Wave</a>
+    <a class="btn-ghost" href="#tarifs">Voir les tarifs</a>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-bar">
+  <div class="stat-item"><div class="stat-num">500+</div><div class="stat-lbl">Clients satisfaits</div></div>
+  <div class="stat-item"><div class="stat-num">24H</div><div class="stat-lbl">Livraison rapide</div></div>
+  <div class="stat-item"><div class="stat-num">9</div><div class="stat-lbl">Réseaux couverts</div></div>
+</div>
+
+<!-- TARIFS -->
+<section id="tarifs">
+  <div class="sec-hd">
+    <span class="sec-tag">Nos Tarifs</span>
+    <h2>PRIX CLAIRS &amp; ACCESSIBLES</h2>
+    <p>Choisis ton réseau social, puis le type de boost souhaité.</p>
+  </div>
+  <div class="network-tabs">
+    <button class="ntab active" onclick="setNet('tiktok',this)">🎵 TikTok</button>
+    <button class="ntab" onclick="setNet('instagram',this)">📸 Instagram</button>
+    <button class="ntab" onclick="setNet('facebook',this)">👤 Facebook</button>
+    <button class="ntab" onclick="setNet('youtube',this)">▶️ YouTube</button>
+    <button class="ntab" onclick="setNet('snapchat',this)">👻 Snapchat</button>
+    <button class="ntab" onclick="setNet('twitter',this)">✖️ Twitter/X</button>
+    <button class="ntab" onclick="setNet('linkedin',this)">💼 LinkedIn</button>
+    <button class="ntab" onclick="setNet('pinterest',this)">📌 Pinterest</button>
+    <button class="ntab" onclick="setNet('telegram',this)">📱 Telegram</button>
+  </div>
+  <div class="type-tabs">
+    <button class="ttab active" onclick="setType('abonnes',this)">👤 Abonnés</button>
+    <button class="ttab" onclick="setType('vues',this)">👁 Vues</button>
+    <button class="ttab" onclick="setType('jaime',this)">❤️ J'aime</button>
+    <button class="ttab" onclick="setType('packs',this)">🎁 Packs</button>
+  </div>
+  <div id="priceContainer"></div>
+</section>
+
+<!-- PAIEMENT WAVE -->
+<section id="payer">
+  <div class="sec-hd">
+    <span class="sec-tag">Paiement sécurisé</span>
+    <h2>PAYE VIA WAVE 💳</h2>
+    <p>Règle ta commande facilement et en toute sécurité avec Wave.</p>
+  </div>
+  <div class="pay-wrap">
+    <div class="pay-card">
+      <div class="wave-header">
+        <div class="wave-icon">🌊</div>
+        <div class="wave-info">
+          <h3>Paiement Wave</h3>
+          <p>Rapide · Sécurisé · Disponible en Côte d'Ivoire</p>
+        </div>
+      </div>
+      <div class="pay-steps">
+        <div class="pay-step"><div class="ps-num">1</div><div class="ps-txt"><h4>Choisis ton service</h4><p>Sélectionne ton réseau, le type de boost et la quantité dans la grille de tarifs ci-dessus.</p></div></div>
+        <div class="pay-step"><div class="ps-num">2</div><div class="ps-txt"><h4>Clique sur "Payer Wave"</h4><p>Tu seras redirigé vers la page de paiement Wave sécurisée. Entre le montant correspondant à ta commande.</p></div></div>
+        <div class="pay-step"><div class="ps-num">3</div><div class="ps-txt"><h4>Envoie le reçu sur WhatsApp</h4><p>Après paiement, envoie ton reçu Wave + le lien de ton compte sur WhatsApp pour valider ta commande.</p></div></div>
+      </div>
+      <a class="btn-wave-pay" href="https://pay.wave.com/m/M_ci_oD0P3pXnTcDO/c/ci/" target="_blank">🌊 Payer maintenant via Wave</a>
+      <p class="pay-note">Après le paiement, contacte-nous sur WhatsApp avec ton reçu et le lien de ton compte.</p>
+    </div>
+  </div>
+</section>
+
+<!-- COMMANDER -->
+<section id="commander">
+  <div class="sec-hd">
+    <span class="sec-tag">Commande</span>
+    <h2>PASSE TA COMMANDE</h2>
+    <p>Remplis le formulaire — tu seras redirigé vers WhatsApp pour finaliser.</p>
+  </div>
+  <div class="order-wrap">
+    <div class="order-form">
+      <div class="form-row">
+        <div class="form-group">
+          <label>Réseau social</label>
+          <select id="f-network">
+            <option value="">— Réseau —</option>
+            <option>🎵 TikTok</option>
+            <option>📸 Instagram</option>
+            <option>👤 Facebook</option>
+            <option>▶️ YouTube</option>
+            <option>👻 Snapchat</option>
+            <option>✖️ Twitter/X</option>
+            <option>💼 LinkedIn</option>
+            <option>📌 Pinterest</option>
+            <option>📱 Telegram</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Type de service</label>
+          <select id="f-type">
+            <option value="">— Type —</option>
+            <option>👤 Abonnés</option>
+            <option>👁 Vues</option>
+            <option>❤️ J'aime</option>
+            <option>🎁 Pack</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Quantité / Pack choisi</label>
+        <select id="f-qty">
+          <option value="">— Sélectionne une quantité —</option>
+          <optgroup label="👤 Abonnés / Abonnés">
+            <option>500 abonnés — 4 000 FCFA</option>
+            <option>1 000 abonnés — 7 000 FCFA</option>
+            <option>2 000 abonnés — 13 000 FCFA</option>
+            <option>5 000 abonnés — 30 000 FCFA</option>
+            <option>10 000 abonnés — 55 000 FCFA</option>
+            <option>20 000 abonnés — 103 000 FCFA</option>
+            <option>50 000 abonnés — 250 000 FCFA</option>
+            <option>100 000 abonnés — 480 000 FCFA</option>
+          </optgroup>
+          <optgroup label="👁 Vues">
+            <option>1 000 vues — 1 000 FCFA</option>
+            <option>5 000 vues — 4 000 FCFA</option>
+            <option>10 000 vues — 7 000 FCFA</option>
+            <option>20 000 vues — 13 000 FCFA</option>
+            <option>50 000 vues — 30 000 FCFA</option>
+            <option>100 000 vues — 55 000 FCFA</option>
+            <option>500 000 vues — 250 000 FCFA</option>
+            <option>1 000 000 vues — 480 000 FCFA</option>
+          </optgroup>
+          <optgroup label="❤️ J'aime / Likes">
+            <option>500 j'aime — 2 000 FCFA</option>
+            <option>1 000 j'aime — 3 500 FCFA</option>
+            <option>2 000 j'aime — 6 500 FCFA</option>
+            <option>5 000 j'aime — 15 000 FCFA</option>
+            <option>10 000 j'aime — 28 000 FCFA</option>
+            <option>20 000 j'aime — 55 000 FCFA</option>
+            <option>50 000 j'aime — 130 000 FCFA</option>
+          </optgroup>
+          <optgroup label="🎁 Packs">
+            <option>Pack Starter: 10 000 vues + 1 000 j'aime — 10 000 FCFA</option>
+            <option>Pack Pro: 50 000 vues + 5 000 j'aime — 40 000 FCFA</option>
+            <option>Pack Expert: 100 000 vues + 10 000 j'aime — 75 000 FCFA</option>
+            <option>Pack Viral: 500 000 vues + 50 000 j'aime — 350 000 FCFA</option>
+          </optgroup>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Ton nom ou pseudo</label>
+        <input type="text" id="f-name" placeholder="Ex: Jean ou @monpseudo">
+      </div>
+      <div class="form-group">
+        <label>Lien du compte ou publication</label>
+        <input type="url" id="f-link" placeholder="https://www.tiktok.com/@moncompte">
+      </div>
+      <div class="form-group">
+        <label>Note (optionnel)</label>
+        <textarea id="f-note" placeholder="Précisions supplémentaires..."></textarea>
+      </div>
+      <button class="submit-wa" onclick="sendWA()">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Envoyer la commande sur WhatsApp
+      </button>
+      <div class="or-div">OU payer directement</div>
+      <a class="submit-wave" href="https://pay.wave.com/m/M_ci_oD0P3pXnTcDO/c/ci/" target="_blank">🌊 Payer via Wave</a>
+      <p class="form-note">Après paiement Wave, envoie le reçu + lien sur WhatsApp pour confirmer ta commande.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FONCTIONNEMENT -->
+<section id="fonctionnement">
+  <div class="sec-hd">
+    <span class="sec-tag">Comment ça marche</span>
+    <h2>3 ÉTAPES SIMPLES</h2>
+    <p>Commander est rapide et facile.</p>
+  </div>
+  <div class="steps">
+    <div class="step">
+      <div class="step-line"><div class="step-num">1</div><div class="step-conn"></div></div>
+      <div class="step-body"><h3>Choisis ton service</h3><p>Sélectionne ton réseau social (TikTok, Instagram, Facebook...), le type de boost et la quantité souhaitée dans la grille de tarifs.</p></div>
+    </div>
+    <div class="step">
+      <div class="step-line"><div class="step-num">2</div><div class="step-conn"></div></div>
+      <div class="step-body"><h3>Règle ta commande</h3><p>Paie facilement et en sécurité via Wave, ou contacte-nous directement sur WhatsApp pour finaliser ta commande.</p></div>
+    </div>
+    <div class="step">
+      <div class="step-line"><div class="step-num">3</div><div class="step-conn"></div></div>
+      <div class="step-body"><h3>Reçois tes résultats</h3><p>Envoie le lien de ton compte + ton reçu Wave sur WhatsApp. Nous traitons ta commande rapidement et tu vois les résultats arriver !</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="ft-logo">ANGE HAIDEN SERVICE BOOST</div>
+  <p>
+    Service rapide • Fiable • Résultats visibles<br>
+    📞 <a href="https://wa.me/2250714371752">+225 07 14 37 17 52</a> &nbsp;·&nbsp;
+    💳 <a href="https://pay.wave.com/m/M_ci_oD0P3pXnTcDO/c/ci/" target="_blank">Payer via Wave</a><br><br>
+    <span style="font-size:10px;opacity:.4">© 2025 Ange Haiden Service Boost — Tous droits réservés</span>
+  </p>
+</footer>
+
+<script>
+const ABONNES=[
+  {q:'500',p:'4 000'},{q:'1 000',p:'7 000'},{q:'2 000',p:'13 000',pop:true},
+  {q:'5 000',p:'30 000'},{q:'10 000',p:'55 000'},{q:'20 000',p:'103 000'},
+  {q:'50 000',p:'250 000'},{q:'100 000',p:'480 000'}
+];
+const VUES=[
+  {q:'1 000',p:'1 000'},{q:'5 000',p:'4 000'},{q:'10 000',p:'7 000',pop:true},
+  {q:'20 000',p:'13 000'},{q:'50 000',p:'30 000'},{q:'100 000',p:'55 000'},
+  {q:'500 000',p:'250 000'},{q:'1 000 000',p:'480 000'}
+];
+const JAIME=[
+  {q:'500',p:'2 000'},{q:'1 000',p:'3 500'},{q:'2 000',p:'6 500',pop:true},
+  {q:'5 000',p:'15 000'},{q:'10 000',p:'28 000'},{q:'20 000',p:'55 000'},
+  {q:'50 000',p:'130 000'}
+];
+const PACKS=[
+  {name:'PACK STARTER',inc:['10 000 Vues','1 000 J\'aime'],p:'10 000',save:'🔥 Meilleur rapport qualité/prix'},
+  {name:'PACK PRO',inc:['50 000 Vues','5 000 J\'aime'],p:'40 000',save:'💎 Très populaire'},
+  {name:'PACK EXPERT',inc:['100 000 Vues','10 000 J\'aime'],p:'75 000',save:'⚡ Résultats rapides'},
+  {name:'PACK VIRAL',inc:['500 000 Vues','50 000 J\'aime'],p:'350 000',save:'🚀 Influence maximale'}
+];
+const NET_LABELS={
+  tiktok:{ab:'Abonnés',v:'Vues',j:'J\'aime / Likes'},
+  instagram:{ab:'Abonnés',v:'Vues / Impressions',j:'J\'aime'},
+  facebook:{ab:'Abonnés / Amis',v:'Vues',j:'J\'aime / Réactions'},
+  youtube:{ab:'Abonnés',v:'Vues',j:'Likes'},
+  snapchat:{ab:'Abonnés',v:'Vues',j:'Vues story'},
+  twitter:{ab:'Abonnés',v:'Impressions',j:'Likes'},
+  linkedin:{ab:'Abonnés',v:'Impressions',j:'Réactions'},
+  pinterest:{ab:'Abonnés',v:'Vues',j:'J\'aime'},
+  telegram:{ab:'Membres / Abonnés',v:'Vues',j:'Réactions'}
+};
+const ICONS={tiktok:'🎵',instagram:'📸',facebook:'👤',youtube:'▶️',snapchat:'👻',twitter:'✖️',linkedin:'💼',pinterest:'📌',telegram:'📱'};
+
+let curNet='tiktok', curType='abonnes';
+
+function setNet(n,btn){
+  curNet=n;
+  document.querySelectorAll('.ntab').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  render();
+}
+function setType(t,btn){
+  curType=t;
+  document.querySelectorAll('.ttab').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  render();
+}
+function render(){
+  const con=document.getElementById('priceContainer');
+  const lbl=NET_LABELS[curNet];
+  let html='';
+  if(curType==='packs'){
+    html='<div class="packs-grid">';
+    PACKS.forEach(pk=>{
+      html+=`<div class="pack" onclick="goOrder('${pk.name}','${pk.p} FCFA')">
+        <div class="pack-net">${ICONS[curNet]} ${curNet.toUpperCase()}</div>
+        <div class="pack-ttl">${pk.name}</div>
+        <div class="pack-inc">${pk.inc.map(i=>`<span>${i}</span>`).join('')}</div>
+        <div class="pack-price">${pk.p} <span style="font-size:13px;color:var(--gold)">FCFA</span></div>
+        <div class="pack-save">${pk.save}</div>
+      </div>`;
+    });
+    html+='</div>';
+  } else {
+    const data=curType==='abonnes'?ABONNES:curType==='vues'?VUES:JAIME;
+    const ul=curType==='abonnes'?lbl.ab:curType==='vues'?lbl.v:lbl.j;
+    html='<div class="price-grid">';
+    data.forEach(item=>{
+      html+=`<div class="pc${item.pop?' pop':''}" onclick="goOrder('${item.q} ${ul} — ${ICONS[curNet]} ${curNet}','${item.p} FCFA')">
+        ${item.pop?'<div class="pop-lbl">Populaire</div>':''}
+        <div class="pc-qty">${item.q}</div>
+        <div class="pc-unit">${ul}</div>
+        <div class="pc-price">${item.p} <span class="pc-curr">FCFA</span></div>
+      </div>`;
+    });
+    html+='</div>';
+  }
+  con.innerHTML=html;
+}
+function goOrder(serviceDesc, price){
+  document.getElementById('commander').scrollIntoView({behavior:'smooth',block:'start'});
+  // Pre-fill network
+  const netSel=document.getElementById('f-network');
+  for(let o of netSel.options){ if(o.text.toLowerCase().includes(curNet)) { netSel.value=o.value; break; } }
+  // highlight
+  const q=document.getElementById('f-qty');
+  q.style.borderColor='var(--gold)';
+  setTimeout(()=>{ q.style.borderColor=''; },2000);
+}
+function sendWA(){
+  const net=document.getElementById('f-network').value;
+  const type=document.getElementById('f-type').value;
+  const qty=document.getElementById('f-qty').value;
+  const name=document.getElementById('f-name').value.trim();
+  const link=document.getElementById('f-link').value.trim();
+  const note=document.getElementById('f-note').value.trim();
+  if(!net){alert('⚠️ Sélectionne un réseau social.');return;}
+  if(!qty){alert('⚠️ Sélectionne une quantité.');return;}
+  if(!name){alert('⚠️ Entre ton nom ou pseudo.');return;}
+  if(!link){alert('⚠️ Entre le lien de ton compte ou publication.');return;}
+  let msg=`🚀 *NOUVELLE COMMANDE — ANGE HAIDEN SERVICE BOOST*\n\n`;
+  msg+=`🌐 *Réseau social :* ${net}\n`;
+  msg+=`🎯 *Type de service :* ${type}\n`;
+  msg+=`📦 *Quantité / Pack :* ${qty}\n`;
+  msg+=`👤 *Nom / Pseudo :* ${name}\n`;
+  msg+=`🔗 *Lien :* ${link}\n`;
+  if(note) msg+=`📝 *Note :* ${note}\n`;
+  msg+=`\n✅ Bonjour, je souhaite passer cette commande. Merci !`;
+  window.open('https://wa.me/2250714371752?text='+encodeURIComponent(msg),'_blank');
+}
+render();
+</script>
+</body>
+</html>
